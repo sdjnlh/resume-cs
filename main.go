@@ -51,6 +51,7 @@ func main() {
 	router.Register(root, rest.WorkExprience)
 	router.Register(root, rest.Message)
 	router.Register(root, rest.Education)
+	router.Register(root, rest.ResumeApi)
 	server := &http.Server{
 		Addr:         "localhost:3001",
 		Handler:      app,
