@@ -13,7 +13,7 @@ type projectExprience int
 var ProjectExprience projectExprience
 
 func (projectExprience) create(c *gin.Context) {
-	projectExprience := &model.ProjectExprience{}
+	projectExprience := &model.Project{}
 	if err := c.Bind(projectExprience); err != nil {
 		c.String(400, "参数错误")
 		c.Abort()
@@ -28,7 +28,7 @@ func (projectExprience) create(c *gin.Context) {
 	}
 }
 func (projectExprience) updata(c *gin.Context) {
-	projectExprience := &model.ProjectExprience{}
+	projectExprience := &model.Project{}
 	if err := c.Bind(projectExprience); err != nil {
 		c.String(400, "参数错误")
 		c.Abort()
@@ -47,14 +47,14 @@ func (projectExprience) list(c *gin.Context) {
 		c.Abort()
 		return
 	}
-	projectExprience := &model.ProjectExprience{}
+	projectExprience := &model.Project{}
 	if err := c.Bind(projectExprience); err != nil {
 		c.String(400, "参数错误")
 		c.Abort()
 		return
 	}
 	r := make(map[string]interface{})
-	users := &[]model.ProjectExprience{}
+	users := &[]model.Project{}
 	if err := service.ProjectExprience.List(page, projectExprience, users); err != nil {
 		c.String(500, "新增失败")
 		c.Abort()
@@ -67,7 +67,7 @@ func (projectExprience) list(c *gin.Context) {
 
 }
 func (projectExprience) delete(c *gin.Context) {
-	projectExprience := &model.ProjectExprience{}
+	projectExprience := &model.Project{}
 	if err := c.Bind(projectExprience); err != nil {
 		c.String(400, "参数错误")
 		c.Abort()
@@ -84,7 +84,7 @@ func (projectExprience) delete(c *gin.Context) {
 }
 func (projectExprience) get(c *gin.Context) {
 	strid := c.Param("id")
-	projectExprience := &model.ProjectExprience{}
+	projectExprience := &model.Project{}
 	projectExprience.Id, _ = strconv.ParseInt(strid, 10, 64)
 	if err := service.ProjectExprience.Get(projectExprience); err != nil {
 		c.String(500, "新增失败")

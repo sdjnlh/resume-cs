@@ -53,7 +53,7 @@ func main() {
 	router.Register(root, rest.Education)
 	router.Register(root, rest.ResumeApi)
 	server := &http.Server{
-		Addr:         "localhost:3001",
+		Addr:         "localhost:3005",
 		Handler:      app,
 		ReadTimeout:  5 * time.Second,
 		WriteTimeout: 10 * time.Second,
@@ -62,7 +62,7 @@ func main() {
 	g.Go(func() error {
 		return server.ListenAndServe()
 	})
-	fmt.Print("listen:3001")
+	fmt.Print("listen:3005", server.Addr)
 	if err := g.Wait(); err != nil {
 		fmt.Print(err)
 	}

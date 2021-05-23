@@ -56,7 +56,7 @@ type Message struct {
 	Email    string `json:"email"`
 	Content  string `json:"content"`
 }
-type ProjectExprience struct {
+type Project struct {
 	Base       `xorm:"extends"`
 	Name       string `json:"name"`
 	Title      string `json:"title" form:"title"`
