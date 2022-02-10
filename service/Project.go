@@ -14,7 +14,7 @@ var ProjectExprience projectExprience
 
 type projectExprience int
 
-func (projectExprience) Create(form *model.Project) error {
+func (projectExprience) Create(form *model.ProjectExperience) error {
 	form.BeforeInsert()
 	if _, err := cs.Sql.Insert(form); err != nil {
 		return err
@@ -22,36 +22,36 @@ func (projectExprience) Create(form *model.Project) error {
 		return nil
 	}
 }
-func (projectExprience) Updata(form *model.Project) error {
+func (projectExprience) Updata(form *model.ProjectExperience) error {
 	form.Lut = time.Now()
 	if _, err := cs.Sql.Id(form.Id).Update(form); err != nil {
 		return err
 	}
 	return nil
 }
-func (projectExprience) List(page *model.Page, projectExprience *model.Project, users *[]model.Project) error {
+func (projectExprience) List(page *model.Page, projectExprience *model.ProjectExperience, users *[]model.ProjectExperience) error {
 	ss := cs.Sql.NewSession()
 	defer ss.Close()
 	if page.K != "" {
 		ss.Where("kind=?", page.K)
 	}
-	if cnt, err := ss.Where("dtd=false").Limit(page.Limit(), page.Skip()).FindAndCount(users, projectExprience); err != nil {
+	if cnt, err := ss.Where("dtd=false").Limit(page.Limit(), page.Skip()).OrderBy("no asc").FindAndCount(users, projectExprience); err != nil {
 		return err
 	} else {
 		page.Cnt = cnt
 		return nil
 	}
 }
-func (projectExprience) Delete(project *model.Project) error {
-	project.Dtd = true
-	if _, err := cs.Sql.Update(project); err != nil {
+func (projectExprience) Delete(projectExprience *model.ProjectExperience) error {
+	projectExprience.Dtd = true
+	if _, err := cs.Sql.Update(projectExprience); err != nil {
 		return err
 	}
 	return nil
 }
-func (projectExprience) Get(project *model.Project) error {
+func (projectExprience) Get(projectExprience *model.ProjectExperience) error {
 
-	if _, err := cs.Sql.ID(project.Id).Get(project); err != nil {
+	if _, err := cs.Sql.ID(projectExprience.Id).Get(projectExprience); err != nil {
 		return err
 	}
 	return nil

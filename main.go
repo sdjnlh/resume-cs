@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
-	_ "github.com/go-sql-driver/mysql"
+	_ "github.com/lib/pq"
 	"github.com/xormplus/xorm"
 	"golang.org/x/sync/errgroup"
 	"lncios.cn/resume/cs"
@@ -23,11 +23,12 @@ var (
 
 func main() {
 	//将数据库拉起
-	params := fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8&parseTime=true", "lhs", "123321", "39.100.19.104:3306", "resume")
+	//params := fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8&parseTime=true", "lhs", "123321", "39.100.19.104:3306", "resume")
+	params := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", "39.100.19.104", 5432, "lh", "lh10070912", "resume")
 	var err error
 	//连接数据库
 
-	cs.Sql, err = xorm.NewEngine("mysql", params)
+	cs.Sql, err = xorm.NewEngine("postgres", params)
 	cs.Sql.ShowSQL(true)
 	if err != nil {
 		panic(err)

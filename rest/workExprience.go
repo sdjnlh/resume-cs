@@ -12,7 +12,7 @@ type workExprience int
 var WorkExprience workExprience
 
 func (workExprience) create(c *gin.Context) {
-	workExprience := &model.WorkExprience{}
+	workExprience := &model.WorkExperience{}
 	if err := c.Bind(workExprience); err != nil {
 		c.String(400, "参数错误")
 		c.Abort()
@@ -27,7 +27,7 @@ func (workExprience) create(c *gin.Context) {
 	}
 }
 func (workExprience) updata(c *gin.Context) {
-	workExprience := &model.WorkExprience{}
+	workExprience := &model.WorkExperience{}
 	if err := c.Bind(workExprience); err != nil {
 		c.String(400, "参数错误")
 		c.Abort()
@@ -46,14 +46,14 @@ func (workExprience) list(c *gin.Context) {
 		c.Abort()
 		return
 	}
-	workExprience := &model.WorkExprience{}
+	workExprience := &model.WorkExperience{}
 	if err := c.Bind(workExprience); err != nil {
 		c.String(400, "参数错误")
 		c.Abort()
 		return
 	}
 	r := make(map[string]interface{})
-	users := &[]model.WorkExprience{}
+	users := &[]model.WorkExperience{}
 	if err := service.WorkExprience.List(page, workExprience, users); err != nil {
 		c.String(500, "新增失败")
 		c.Abort()
@@ -65,7 +65,7 @@ func (workExprience) list(c *gin.Context) {
 	}
 }
 func (workExprience) delete(c *gin.Context) {
-	workExprience := &model.WorkExprience{}
+	workExprience := &model.WorkExperience{}
 	if err := c.Bind(workExprience); err != nil {
 		c.String(400, "参数错误")
 		c.Abort()
@@ -82,7 +82,7 @@ func (workExprience) delete(c *gin.Context) {
 }
 func (workExprience) get(c *gin.Context) {
 	strid := c.Param("id")
-	workExprience := &model.WorkExprience{}
+	workExprience := &model.WorkExperience{}
 	workExprience.Id, _ = strconv.ParseInt(strid, 10, 64)
 	if err := service.WorkExprience.Get(workExprience); err != nil {
 		c.String(500, "新增失败")

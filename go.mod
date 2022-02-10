@@ -41,6 +41,7 @@ require (
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/gin-gonic/gin v1.3.0
 	github.com/go-sql-driver/mysql v1.4.1
+	github.com/lib/pq v1.7.0
 	github.com/go-xorm/builder v0.3.4 // indirect
 	github.com/go-xorm/core v0.6.0
 	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0

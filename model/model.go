@@ -51,12 +51,12 @@ type Role struct {
 	OwnerId     int64     `json:"ownerId"`
 }
 type Message struct {
-	Base     `xorm:"extends"`
-	Commpany string `json:"commpany"`
-	Email    string `json:"email"`
-	Content  string `json:"content"`
+	Base    `xorm:"extends"`
+	Company string `json:"company"`
+	Email   string `json:"email"`
+	Content string `json:"content"`
 }
-type Project struct {
+type ProjectExperience struct {
 	Base       `xorm:"extends"`
 	Name       string `json:"name"`
 	Title      string `json:"title" form:"title"`
@@ -66,9 +66,9 @@ type Project struct {
 	Kind       string `json:"kind" form:"kind"`
 	No         int    `json:"no,string"`
 }
-type WorkExprience struct {
+type WorkExperience struct {
 	Base        `xorm:"extends"`
-	Commpany    string    `xorm:"commpany" json:"commpany"`
+	Company     string    `xorm:"company" json:"company"`
 	Jobs        string    `json:"jobs"`
 	StartTime   time.Time `json:"startTime"`
 	EndTime     time.Time `json:"endTime"`
